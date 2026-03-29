@@ -1,0 +1,14 @@
+{
+    "name": "ramon/academic",
+    "autoload": {
+        "psr-4": {
+            "Ramon\\Academic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ramon Rocha"
+        }
+    ],
+    "require": {}
+}
