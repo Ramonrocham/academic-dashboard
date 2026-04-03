@@ -1,5 +1,4 @@
-<?
-
+<?php
 namespace Ramon\Academic\core;
 
 class Router{
@@ -11,9 +10,15 @@ class Router{
 
         $controllerName = $parts[0] ?? 'Login';
         $controllerName = ucfirst($controllerName) . "Controller";
-        print_r($parts);
-        echo '<hr>';
-        echo "controler: $controllerName";
-        
+
+        $controllerClass = "\\Ramon\\Academic\\controllers\\" . $controllerName;
+
+        if(!class_exists($controllerClass)){
+            echo "ERROR 404: PAGE NOT FOUND";
+            return;
+        }
+        $controller = new $controllerClass();
+
+        $controller->index();
     }
 }

@@ -4,9 +4,9 @@ namespace Ramon\Academic\controllers;
 
 use Ramon\Academic\core\Controller;
 
-class LoginController extends Controller{
-
+class DashboardController extends Controller{
+    
     public function index(){
-        $this->view('login/index');
+        $this->view('dashboard/index');
     }
 };
