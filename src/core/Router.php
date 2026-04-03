@@ -9,16 +9,21 @@ class Router{
         $parts = $url ? explode('/', $url) : [];
 
         $controllerName = $parts[0] ?? 'Login';
+
         $controllerName = ucfirst($controllerName) . "Controller";
 
         $controllerClass = "\\Ramon\\Academic\\controllers\\" . $controllerName;
 
+        $actionName = $parts[1] ?? 'index';
+
         if(!class_exists($controllerClass)){
-            echo "ERROR 404: PAGE NOT FOUND";
-            return;
+            $controllerClass = "\Ramon\\Academic\\controllers\\NotFoundController";
         }
         $controller = new $controllerClass();
-
-        $controller->index();
+        
+        if(!method_exists($controller, $actionName)){
+            $actionName = 'index';
+        }
+        $controller->$actionName();
     }
 }
