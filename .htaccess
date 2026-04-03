@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Impede que o Apache tente encontrar pastas ou arquivos reais
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+
+# Manda tudo para o seu arquivo de rotas
+RewriteCond %{REQUEST_URI} !^/src
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
