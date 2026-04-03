@@ -23,7 +23,12 @@ class Router{
         
         if(!method_exists($controller, $actionName)){
             $actionName = 'index';
+            $controllerClass = "\Ramon\\Academic\\controllers\\NotFoundController";
+            $controller = new $controllerClass();
         }
-        $controller->$actionName();
+        $params = array_slice($parts, 2);
+        //$controller->$actionName();
+
+        call_user_func_array([$controller, $actionName], $params);
     }
 }

@@ -10,7 +10,7 @@ class DashboardController extends Controller{
         $this->view('dashboard/index');
     }
 
-    public function classes(){
-        echo 'Classes: []';
+    public function class($idClass = null){
+        $this->view('dashboard/class', ["idClass" => $idClass]);
     }
 };
