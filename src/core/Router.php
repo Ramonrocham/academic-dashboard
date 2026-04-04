@@ -1,6 +1,8 @@
 <?php
 namespace Ramon\Academic\core;
 
+use Ramon\Academic\controllers\HttpErrorController;
+
 class Router{
 
     public function dispatch($url){
@@ -17,14 +19,17 @@ class Router{
         $actionName = $parts[1] ?? 'index';
 
         if(!class_exists($controllerClass)){
-            $controllerClass = "\Ramon\\Academic\\controllers\\NotFoundController";
+            $controller = new HttpErrorController;
+            $controller->notFound();
+            return;
         }
+
         $controller = new $controllerClass();
         
         if(!method_exists($controller, $actionName)){
-            $actionName = 'index';
-            $controllerClass = "\Ramon\\Academic\\controllers\\NotFoundController";
-            $controller = new $controllerClass();
+            $controller = new HttpErrorController;
+            $controller->notFound();
+            return;
         }
         $params = array_slice($parts, 2);
         //$controller->$actionName();
