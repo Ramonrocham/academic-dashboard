@@ -32,7 +32,6 @@ class Router{
             return;
         }
         $params = array_slice($parts, 2);
-        //$controller->$actionName();
 
         call_user_func_array([$controller, $actionName], $params);
     }

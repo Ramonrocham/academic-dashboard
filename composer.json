@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "Ramon\\Academic\\": "src/"
-        }
+        },
+        "files": [
+            "src/core/functions.php"
+        ]
     },
     "authors": [
         {

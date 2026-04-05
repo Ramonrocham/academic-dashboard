@@ -7,5 +7,8 @@
 </head>
 <body>
     <h1>Pagina dashboard</h1>
+    <p>nome: <?= $user['name'] ?></p>
+    <p>email: <?= $user['email'] ?></p>
+    <p>id: <?= $user['id'] ?></p>
 </body>
 </html>
