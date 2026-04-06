@@ -4,11 +4,10 @@ namespace Ramon\Academic\controllers;
 
 use Ramon\Academic\core\Controller;
 
-session_unset();
-
 class LoginController extends Controller{
 
     public function index($msg = null){
+        dd(dotenv('DB_USER'));
         $this->view('login/index', ['msg' => $msg]);
     }
 
@@ -36,6 +35,14 @@ class LoginController extends Controller{
             exit;
         }
         $this->index('Email ou senha incorretos');
+        exit;
+    }
+
+    public function logout(){
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: /login');
         exit;
     }
 };

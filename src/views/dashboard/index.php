@@ -10,5 +10,9 @@
     <p>nome: <?= $user['name'] ?></p>
     <p>email: <?= $user['email'] ?></p>
     <p>id: <?= $user['id'] ?></p>
+
+    <form action="http://localhost:8080/login/logout" method="POST">
+        <button type="submit">Sair</button>
+    </form>
 </body>
 </html>

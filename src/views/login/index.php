@@ -1,16 +1,3 @@
-<?php
-
-// URL do endpoint de autenticação
-$url = 'http://localhost:8080/login/auth';
-
-// Dados a serem enviados
-$data = [
-    'email' => 'teste@email.com',
-    'password' => 'senha123'
-];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
