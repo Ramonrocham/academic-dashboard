@@ -3,11 +3,14 @@
 namespace Ramon\Academic\controllers;
 
 use Ramon\Academic\core\Controller;
+use Ramon\Academic\core\Database;
 
 class LoginController extends Controller{
 
     public function index($msg = null){
-        dd(dotenv('DB_USER'));
+        $database = new Database();
+        $result = $database->query('SELECT 1 + 2 as soma');
+        dd($result->fetch()); // Testa a conexão
         $this->view('login/index', ['msg' => $msg]);
     }
 
