@@ -55,4 +55,47 @@ class Database{
             throw new \PDOException('Erro de consulta: ' . $e->getMessage(), (int)$e->getCode());
         }
     }
+    /**
+     * Retorna um unico resultado da consulta
+     */
+    public function fetch($sql, $params = []): ?array {
+        $stmt = $this->query($sql, $params);
+        return $stmt->fetch();
+    }
+
+    /**
+     * Retorna todos os resultados da consulta
+     */
+    public function fetchAll($sql, $params = []): array {
+        $stmt = $this->query($sql, $params);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Executa uma consulta sem retorno de dados (INSERT, UPDATE, DELETE)
+     */
+    public function execute($sql, $params = []): int {
+        $stmt = $this->query($sql, $params);
+        return $stmt->rowCount();
+    }
+
+    /**
+     * Retorna o ID do último registro inserido
+     */
+    public function lastInsertId(): string {
+        if($this->connection === null){
+            $this->connect();
+        }
+        return $this->connection->lastInsertId();
+    }
+
+    /**
+     * Retorna o número de linhas afetadas por uma consulta
+     */
+    public function rowCount(): int {
+        if($this->connection === null){
+            $this->connect();
+        }    
+        return $this->connection->rowCount();
+    }
 }
