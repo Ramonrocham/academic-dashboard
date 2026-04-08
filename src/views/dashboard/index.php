@@ -7,9 +7,12 @@
 </head>
 <body>
     <h1>Pagina dashboard</h1>
-    <p>nome: <?= $user['name'] ?></p>
-    <p>email: <?= $user['email'] ?></p>
-    <p>id: <?= $user['id'] ?></p>
+    <?php if($role == "PROFESSOR"): ?>
+        <p>Bem vindo professor <?= $name ?></p>
+    <?php endif; ?>
+    <p>nome: <?= $name ?></p>
+    <p>email: <?= $email ?></p>
+    <p>id: <?= $id ?></p>
 
     <form action="http://localhost:8080/login/logout" method="POST">
         <button type="submit">Sair</button>

@@ -58,7 +58,7 @@ class Database{
     /**
      * Retorna um unico resultado da consulta
      */
-    public function fetch($sql, $params = []): ?array {
+    public function fetch($sql, $params = []) {
         $stmt = $this->query($sql, $params);
         return $stmt->fetch();
     }
@@ -66,7 +66,7 @@ class Database{
     /**
      * Retorna todos os resultados da consulta
      */
-    public function fetchAll($sql, $params = []): array {
+    public function fetchAll($sql, $params = []) {
         $stmt = $this->query($sql, $params);
         return $stmt->fetchAll();
     }
@@ -74,7 +74,7 @@ class Database{
     /**
      * Executa uma consulta sem retorno de dados (INSERT, UPDATE, DELETE)
      */
-    public function execute($sql, $params = []): int {
+    public function execute($sql, $params = []) {
         $stmt = $this->query($sql, $params);
         return $stmt->rowCount();
     }
@@ -82,7 +82,7 @@ class Database{
     /**
      * Retorna o ID do último registro inserido
      */
-    public function lastInsertId(): string {
+    public function lastInsertId() {
         if($this->connection === null){
             $this->connect();
         }
@@ -92,7 +92,7 @@ class Database{
     /**
      * Retorna o número de linhas afetadas por uma consulta
      */
-    public function rowCount(): int {
+    public function rowCount() {
         if($this->connection === null){
             $this->connect();
         }    

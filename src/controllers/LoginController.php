@@ -3,7 +3,7 @@
 namespace Ramon\Academic\controllers;
 
 use Ramon\Academic\core\Controller;
-use Ramon\Academic\core\Database;
+use Ramon\Academic\models\User;
 
 class LoginController extends Controller{
 
@@ -19,14 +19,17 @@ class LoginController extends Controller{
 
         $password = $_POST['password'];
         $email = $_POST['email'];
+        $user = new User();
 
-        if($email === 'email@email.com' && $password === 'senha123'){
-            
+        $result = $user->loginWithEmail($email, $password);
+
+        if($result && isset($result['id'])){
             session_start();
             $_SESSION['user'] = [
-                'name' => 'Ramon',
-                'email' => $email,
-                'id' => 1
+                'name' => $result['name'],
+                'email' => $result['email'],
+                'id' => $result['id'],
+                'role' => $result['role']
             ];
             $_SESSION['logged_in'] = true;
             $_SESSION['expires'] = time() + 60 * 60; // Expira em 1 hora

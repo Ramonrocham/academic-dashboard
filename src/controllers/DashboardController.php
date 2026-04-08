@@ -14,9 +14,7 @@ class DashboardController extends Controller{
             exit;
         }
 
-        $this->view('dashboard/index', [
-            'user' => $_SESSION['user']
-        ]);
+        $this->view('dashboard/index', $_SESSION['user']);
     }
 
     public function class($idClass = null){
