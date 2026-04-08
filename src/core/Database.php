@@ -4,7 +4,20 @@ namespace Ramon\Academic\core;
 
 class Database{ 
 
+    private static $instance = null;
+
     private $connection = null;
+
+    private function __construct(){
+        // Impede a criação de instâncias diretamente
+    }
+
+    public static function getInstance(){
+        if(self::$instance === null){
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
 
     private function connect(){
         $host = dotenv('DB_HOST');
